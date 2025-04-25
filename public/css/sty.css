@@ -1,0 +1,27 @@
+.bg-body-orange {
+    background-color: rgb(255, 169, 11);
+
+}
+.btn-orange {
+background-color:  orange !important;
+}
+.text-orange {
+    color: rgb(255, 169, 11) !important;
+
+}
+.border.custom-border {
+    border-color: rgb(255, 169, 11) !important; /* Bright orange */
+  }
+.p {
+padding-top: 80px;
+  }
+.w-380 {
+    width: 380px !important;
+}
+.full-width-hr {
+    margin-left: -1.5rem !important;
+    margin-right: -1.5rem !important;
+}
+
+
+
