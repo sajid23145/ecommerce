@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\product;
+use App\Services\ProductService;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
@@ -11,9 +12,16 @@ class PayPalCheckout extends Component
 {
     public $id;
     public $product;
+
+     protected $productservice;
+
+    public function boot(ProductService $productService)
+    {
+$this->productservice=$productService;
+    }
     public function mount($id){
         $this->id=$id;
-        $this->product=product::find($id);
+        $this->product=$this->productservice->getbyid($id);
     }
     public function processpayment(){
 $provider=new paypalclient;

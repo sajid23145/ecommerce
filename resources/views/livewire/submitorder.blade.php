@@ -22,7 +22,7 @@
                             <!-- As a link -->
                             <nav class="navbar shadow-lg bg-body-orange">
                                 <div class="container-fluid">
-                                    <a class="text-decoration-none text-dark" href="{{url('/')}}"><h1 class="">E-commerce</h1></a>
+                                    <a class="text-decoration-none text-dark" wire:navigate href="{{url('/')}}"><h1 class="">E-commerce</h1></a>
                                     <div class="ms-auto">
                                     <form class="d-flex" role="search">
                                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -30,9 +30,9 @@
                                       </form>
                                     </div>
                                     <div class="ms-auto">
-                                        <a class="navbar-brand btn btn btn-light" href="{{ url('/login') }}">login</a>
-                                            <a class="navbar-brand btn btn-sm btn-light" href="{{ url('/register') }}">register</a>
-                                        <a class="navbar-brand btn btn-sm btn-success text-white" wire:click.prevent="logout" href="">logout</a>
+                                        <a class="navbar-brand btn btn btn-light" wire:navigate href="{{ url('/login') }}">login</a>
+                                            <a class="navbar-brand btn btn-sm btn-light" wire:navigate href="{{ url('/register') }}">register</a>
+                                        <a class="navbar-brand btn btn-sm btn-success text-white" wire:navigate wire:click.prevent="logout" href="">logout</a>
 
                                     </div>
 

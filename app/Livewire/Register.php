@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use App\Services\ProductService;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\Attributes\Title;
@@ -15,7 +16,12 @@ class Register extends Component
 
     public $password;
 
+     protected $productservice;
 
+    public function boot(ProductService $productService)
+    {
+$this->productservice=$productService;
+    }
     public function submit(){
         $this->validate([
             'name'=>'required',
@@ -24,7 +30,7 @@ class Register extends Component
             'password'=>'required',
         ]);
 
-        User::create([
+        $this->productservice->create([
             'name'=>$this->name,
             'email'=>$this->email,
             'phonenumber'=>$this->phonenumber,

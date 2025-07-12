@@ -28,7 +28,7 @@
                         <div class="ms-auto">
                             <a class="navbar-brand btn btn btn-light" href="{{ url('/login') }}">login</a>
                                             <a class="navbar-brand btn btn-sm btn-light" href="{{ url('/register') }}">register</a>
-                            <a class="navbar-brand btn btn-sm btn-success text-white" wire:click.prevent="logout" href="">logout</a>
+                            <a class="navbar-brand btn btn-sm btn-success text-white" wire:navigate wire:click.prevent="logout" href="">logout</a>
 
                         </div>
 

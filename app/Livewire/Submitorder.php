@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Mail\NewOrderMail;
 use App\Models\order;
 use App\Models\product;
+use App\Services\ProductService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
@@ -26,9 +27,16 @@ class Submitorder extends Component
 
     public $id;
     public $product;
+
+      protected $productservice;
+
+    public function boot(ProductService $productService)
+    {
+$this->productservice=$productService;
+    }
     public function mount($id){
         $this->id=$id;
-        $this->product=product::find($id);
+        $this->product=$this->productservice->getbyid($id);
         $this->product_id = $this->product->id;
         $this->price = $this->product->price;
 
@@ -40,7 +48,7 @@ class Submitorder extends Component
             'phonenumber'=>'required|numeric',
             'address'=>'required',
         ]);
-        $order=order::create([
+        $order=$this->productservice->ordercreate([
             'user_id'=>Auth::id(),
             'product_id'=>$this->product_id,
             'price'=>$this->price,

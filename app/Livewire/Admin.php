@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\order;
 use App\Models\product;
+use App\Services\ProductService;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 
@@ -11,13 +12,21 @@ use Livewire\Attributes\Title;
 
 class Admin extends Component
 {
+
+
+     protected $productservice;
+
+    public function boot(ProductService $productService)
+    {
+$this->productservice=$productService;
+    }
     #[title('dashboard')]
 
     public function render()
     {
-        $product=product::count();
-        $order=order::count();
-        $pendingorder=order::where('markorder','pending')->count();
+        $product=$this->productservice->product();
+        $order=$this->productservice->order();
+        $pendingorder=$this->productservice->pendingorder();
 
         return view('livewire.admin',compact('product','order','pendingorder'));
     }

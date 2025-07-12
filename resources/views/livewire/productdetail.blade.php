@@ -17,7 +17,7 @@
                 <!-- As a link -->
                 <nav class="navbar shadow-lg bg-body-orange">
                     <div class="container-fluid">
-                        <a class="text-decoration-none text-dark" href="{{url('/')}}"><h1 class="">E-commerce</h1></a>
+                        <a class="text-decoration-none text-dark" wire:navigate href="{{url('/')}}"><h1 class="">E-commerce</h1></a>
                         <div class="ms-auto">
                         <form class="d-flex" role="search">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -25,9 +25,9 @@
                           </form>
                         </div>
                         <div class="ms-auto">
-                            <a class="navbar-brand btn btn btn-light" href="{{ url('/login') }}">login</a>
-                                            <a class="navbar-brand btn btn-sm btn-light" href="{{ url('/register') }}">register</a>
-                            <a class="navbar-brand btn btn-sm btn-success text-white" wire:click.prevent="logout" href="">logout</a>
+                            <a class="navbar-brand btn btn btn-light" wire:navigate href="{{ url('/login') }}">login</a>
+                                            <a class="navbar-brand btn btn-sm btn-light" wire:navigate href="{{ url('/register') }}">register</a>
+                            <a class="navbar-brand btn btn-sm btn-success text-white" wire:navigate wire:click.prevent="logout" href="">logout</a>
 
                         </div>
 
@@ -56,9 +56,9 @@
                                     <h5 class="card-title">Title:   {{ $products->title }}</h5>
                                     <p class="card-text fw-semibold">Description:  {{ $products->description }}</p>
                                     <h6 class="">price: {{ $products->price }}</h6>
-                                    <a href="{{ url('/paypalcheckout', $products->id) }}"
+                                    <a wire:navigate href="{{ url('/paypalcheckout', $products->id) }}"
                                         class="btn btn-orange btn-sm">buy now with paypal</a>
-                                    <a href="{{ url('/submitorder', $products->id) }}"
+                                    <a wire:navigate href="{{ url('/submitorder', $products->id) }}"
                                         class="btn btn-success btn-sm">submit order</a>
                                 </div>
                             </div>

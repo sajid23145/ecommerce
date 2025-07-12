@@ -15,7 +15,7 @@
             <div class="row">
 
                 <div class="col-xl-12">
-                    <a href="{{ url('/addproduct') }}" class="btn btn-primary">add product</a>
+                    <a wire:navigate href="{{ url('/addproduct') }}" class="btn btn-primary">add product</a>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -52,9 +52,9 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ url('/editproduct', $pro->id) }}"><i
+                                            <a wire:navigate href="{{ url('/editproduct', $pro->id) }}"><i
                                                     class="fa-solid fa-pen-to-square"></i></a>
-                                            <a wire:click="delete({{ $pro->id }})"><i
+                                            <a wire:navigate wire:click="delete({{ $pro->id }})"><i
                                                     class="fa-solid fa-trash text-danger ms-2"></i></a>
                                         </td>
                                     </tr>

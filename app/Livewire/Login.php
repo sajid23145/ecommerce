@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Services\ProductService;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\Attributes\Title;
@@ -11,30 +12,39 @@ class Login extends Component
     public $email;
     public $password;
 
+
+     protected $productservice;
+
+    public function boot(ProductService $productService)
+    {
+$this->productservice=$productService;
+    }
     public function submit(){
         $this->validate([
             'email'=>'required|email',
             'password'=>'required',
 
         ]);
-        if (Auth::attempt(['email'=>$this->email,'password'=>$this->password]) && Auth::user()->role=='user') {
+        $result=$this->productservice->submitlogin($this->email,$this->password);
 
-            session()->flash('message', 'you are login successfully');
+        if ($result['success'] && $result['role']==='user') {
+
+            session()->flash('message', $result['message']);
 
             return redirect()->route('product.list');
 
-        }elseif (Auth::attempt(['email'=>$this->email,'password'=>$this->password]) && Auth::user()->role=='admin') {
+        }elseif ($result['success'] && $result['role']==='admin') {
 
-            session()->flash('message', 'hello admin you login successfully');
-
+             session()->flash('message', $result['message']);
 
             return redirect(url('/admin'));
 
         }else{
 
-            session()->flash('message','please first register');
+            session()->flash('message',$result['message']);
     return redirect()->back();
         }
+
     }
     #[title('login-page')]
 
