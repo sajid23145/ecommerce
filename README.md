@@ -1,4 +1,4 @@
-# Laravel E-Commerce (or Your Project Name)
+# Laravel E-Commerce 
 A modern, responsive e-commerce application built with Laravel, Livewire, and Bootstrap.
 
 ## 🚀 Features
