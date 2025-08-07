@@ -1,4 +1,4 @@
 <?php
 return [
-    'title_name'=>'E-commerce'
+    'title_name'=>'E-commercee'
 ];
